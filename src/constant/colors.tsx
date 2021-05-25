@@ -1,0 +1,6 @@
+export const backgroundColor = '#e0e0e0'
+export const accentColor = '#eb8004'
+export const cardBackgroundColor = '#f5f5f5'
+export const adFontColor = '#75a2db'
+export const mainFontColor = '#181818'
+export const mutedFontColor = '#7f7f7f'
