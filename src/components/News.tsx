@@ -38,9 +38,23 @@ const LastModified = styled(Text)<{ highlighted?: string }>`
 
 interface NewsComponent extends NewsType {
   highlighted?: string,
-  onPress: (event: GestureResponderEvent) => void
+  onPress: (event: GestureResponderEvent) => void,
 }
 
+/**
+ * This component represents an article in the list. It will display a title, a
+ * subtitle or a modification date if these are provided. It can handle the 
+ * onPress event.
+ *
+ * @param {NewsComponent} {
+ *   id: string,
+ *   highlighted?: string,
+ *   title?: string,
+ *   subtitle?: string,
+ *   lastModified?: string,
+ *   onPress: (event: GestureResponderEvent) => void,
+ * }
+ */
 const News = ({
   id,
   highlighted,
@@ -58,7 +72,7 @@ const News = ({
         </Content>
       )}
       {lastModified && (
-        <LastModified testID={`news-lastModified`} highlighted={highlighted}>
+        <LastModified testID={'news-lastModified'} highlighted={highlighted}>
           {moment(lastModified).fromNow()}
         </LastModified>
       )}

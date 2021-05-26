@@ -10,7 +10,12 @@ const ImageContainer = styled(Image)`
   width: 100%;
   height: 300px;
 `
-
+/**
+ * This component represent an image in the list. It will show the image if the 
+ * provided url is valid.
+ *
+ * @param {NewsType} { id, url }
+ */
 const NewsImage = ({ id, url }: NewsType) => {
   const [error, setError] = useState(false)
 

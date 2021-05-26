@@ -28,6 +28,12 @@ interface Ad extends NewsType {
   onPress: (event: GestureResponderEvent) => void
 }
 
+/**
+ * This component used to render the Ads in the App. It can show a title and 
+ * can handle an onPress event. 
+ *
+ * @param {Ad} { id: string, title: string, onPress: (event: GestureResponderEvent) => void }
+ */
 const Ad = ({ id, title, onPress }: Ad) => (
   <CardContainer>
     <StyledTouchableOpacity testID={`ad-card-${id}`} onPress={onPress}>

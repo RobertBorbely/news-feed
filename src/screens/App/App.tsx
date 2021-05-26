@@ -1,17 +1,16 @@
-import { StatusBar } from "expo-status-bar"
-import { registerRootComponent } from 'expo'
-import React, { useEffect, useState } from "react"
-import styled from "styled-components"
-import { SafeAreaView, FlatList } from "react-native"
+import { StatusBar } from 'expo-status-bar'
+import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
+import { SafeAreaView, FlatList } from 'react-native'
 import { openBrowserAsync } from 'expo-web-browser'
 
-import { backgroundColor } from "../../constant"
-import { getNews } from "../../services/api"
-import News from "../../components/News"
-import { News as NewsType } from '../../types' 
-import Ad from "../../components/Ad"
-import NewsImage from "../../components/NewsImage"
-import EmptyList from "../../components/EmptyList"
+import { backgroundColor } from '../../constant'
+import { getNews } from '../../services/api'
+import News from '../../components/News'
+import { News as NewsType } from '../../types'
+import Ad from '../../components/Ad'
+import NewsImage from '../../components/NewsImage'
+import EmptyList from '../../components/EmptyList'
 
 const Container = styled(SafeAreaView)`
   flex: 1;
@@ -21,7 +20,7 @@ const Container = styled(SafeAreaView)`
 
 const App = () => {
   const [news, setNews] = useState<NewsType[]>([])
-  const [error, setError] = useState("")
+  const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -36,7 +35,7 @@ const App = () => {
       setLoading(false)
     } catch (error) {
       setLoading(false)
-      setError("Something went wrong! :(")
+      setError('Something went wrong! :(')
     }
   }
 
@@ -46,11 +45,21 @@ const App = () => {
   const renderItem = ({ item }: { item: NewsType }) => {
     switch (item.type) {
       case 'news':
-        return <News onPress={onItemPress(item.url)} {...({...item, highlighted: item.style})}/>
+        return (
+          <News
+            onPress={onItemPress(item.url)}
+            {...{ ...item, highlighted: item.style }}
+          />
+        )
       case 'ad':
-        return <Ad onPress={onItemPress(item.url)} {...({...item, highlighted: item.style})} />
+        return (
+          <Ad
+            onPress={onItemPress(item.url)}
+            {...{ ...item, highlighted: item.style }}
+          />
+        )
       case 'image':
-        return <NewsImage {...({...item, highlighted: item.style})} />
+        return <NewsImage {...{ ...item, highlighted: item.style }} />
       default:
         return null
     }
@@ -67,11 +76,10 @@ const App = () => {
         refreshing={loading}
         contentContainerStyle={{ flexGrow: 1 }}
         style={{ padding: 10 }}
-        ListEmptyComponent={<EmptyList error={error}/>}
+        ListEmptyComponent={<EmptyList error={error} />}
       />
     </Container>
   )
 }
 
-registerRootComponent(App)
 export default App
